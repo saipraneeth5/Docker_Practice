@@ -1,0 +1,63 @@
+
+<div class="container">
+   
+    <h3>ADD REPORT DETAILS</h3>
+
+<form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+    <div class="form-group">
+        <label>PATIENT ID: </label>
+        <input required minlength="1" type="number"  #patientIdRef='ngModel' name="patientId" ngModel class="form-control">
+    </div>
+
+   <div class="form-group">
+       <label>Date Of Report: </label>
+        <input  type="date"  name="dateOfReport" #dateOfReport='ngModel' ngModel class="form-control"> 
+
+    </div>
+
+    <div class="mb-3">
+                <label  class="form-label">Description Of Report:</label>
+                <!-- <textarea class="form-control" id="textarea" rows="3"></textarea> -->
+                <input  type="text"  name="descriptionOfReport" #descrep='ngModel' ngModel class="form-control"> 
+                <!-- <div> 
+                    provide Description of Report
+                </div> -->
+              </div>
+
+    <div class="form-group">
+
+        <label>visualAcuity: </label>
+
+        <input  type="number"  name="visualAcuity" #visualAcutity='ngModel' ngModel  class="form-control">
+        <!-- <div> 
+            provide visualAcuity
+        </div> -->
+    </div>
+    
+
+    <div class="form-group">
+
+        <label>visualAcuity Distance: </label>
+
+        <input  type="number"  name="visualAcuityDistance" #visualAcuityDistance='ngModel' ngModel class="form-control">
+        <!-- <div> 
+            provide visualAcuity Distance
+        </div> -->
+    </div>
+    
+    <div class="form-group">
+
+        <label>visualAcuity Near: </label>
+
+        <input  type="number"  name="visualAcuityNear" #visualAcuityNear='ngModel' ngModel class="form-control">
+        <!-- <div> 
+            provide visualAcuity Near
+        </div> -->
+    </div>
+
+    <input type="submit" value="Add REPORT" class="btn btn-success" style="margin-right: 15px;">
+    <input type="reset" value="Clear" class="btn btn-danger" style="margin-right: 20px;"> <button class="btn btn-info" (click)="onBack()">Back</button>
+
+</form>
+</div><br><br>

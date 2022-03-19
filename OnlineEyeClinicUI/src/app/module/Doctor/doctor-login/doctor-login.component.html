@@ -1,0 +1,60 @@
+<div class="container">
+    <form #doctorLogin="ngForm" (ngSubmit)="onSubmit(doctorLogin.value)">
+      <fieldset class="border p-2">
+        <legend class="w-auto">Doctor Login</legend>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Username"
+            id="username"
+            #userNameRef="ngModel"
+            name="username"
+            ngModel
+            class="form-control"
+            required
+          />
+          <div
+            *ngIf="userNameRef.errors && userNameRef.touched"
+            class="alert alert-danger"
+          >
+            <div [hidden]="!userNameRef.errors.required">Provide Username</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter password"
+            id="pwd"
+            #passwordRef="ngModel"
+            name="password"
+            ngModel
+            class="form-control"
+            minlength="8"
+            required
+          />
+          <div
+            *ngIf="passwordRef.errors && passwordRef.touched"
+            class="alert alert-danger"
+          >
+            <div [hidden]="!passwordRef.errors.required">Enter Password</div>
+            <div *ngIf="!passwordRef.errors.pattern">Mininum 8 Characters</div>
+          </div>
+        </div>
+        <input
+          [disabled]="doctorLogin.invalid"
+          type="submit"
+          value="Login"
+          class="btn btn-primary"
+          style="margin-right: 30px"
+        />
+        <a [routerLink]="'/forgotpassword'" class="link-blue">Forgot Password?</a>
+      </fieldset>
+    </form>
+  </div>
+  <br />
+  <br />
+  

@@ -1,0 +1,41 @@
+
+<div class="container">
+  <div class="row">
+  
+    <div class="col-md-3">
+         <div class="list-group ">
+              <a class="list-group-item list-group-item-action active" style="cursor:pointer;">Dashboard</a>
+              <a class="list-group-item list-group-item-action" style="cursor:pointer;" (click)="onViewDoctors()">View Doctors</a>
+              <a  class="list-group-item list-group-item-action" style="cursor:pointer;" (click)="onBookAppointment()">Book Appointment</a>
+              <a  class="list-group-item list-group-item-action" style="cursor:pointer;" (click)="onViewAppointment()">View Appointment</a>
+              <a  class="list-group-item list-group-item-action" style="cursor:pointer;" (click)="onViewReport()">View Report</a>
+              <a class="list-group-item list-group-item-action" (click)="onViewSpectacles()">View Spectacles</a>
+          </div> 
+    </div>
+    <div class="row" style="width: 70%">
+  <div class="container" *ngFor="let p of patients" >
+    <div class="jumbotron" style="cursor:pointer;">
+      <h1 align="center"><i>Welcome {{p.patientName| uppercase}}</i></h1>
+    </div>
+    <div class="card" style="width:auto">
+      <div class="card-body " style="cursor:pointer; border-radius:0%; background-color:MediumSeaGreen;">
+        <div style="margin-left: 10%;">
+        <h4 class="card-title"><b>Profile Details:</b></h4>
+        <p class="card-text" >
+          <i class="fas fa-user"></i> {{p.patientName}} <br>
+            <!-- Age:   {{p.patientAge}} <br> -->
+            <i class="fas fa-mobile"></i> {{p.patientMobile}}<br>
+            <i class="fas fa-envelope-square"></i> {{p.patientEmail}} <br>
+            <!-- Date of Birth:   {{p.patientDOB}} <br> -->
+            <i class="far fa-address-card"></i> {{p.patientAddress}} <br>
+            <b>Update Profile<i class="fas fa-edit" style="margin-left: 10%;" (click)=update(p)></i></b><br>
+        </p>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row" ><button [routerLink]="'/patientlogin'" class="btn"  style="height:10%; margin-left:40%; margin-right:20%; background-color:lightcoral;" >Logout</button></div>
+  </div>
+  </div><br><br>
+  

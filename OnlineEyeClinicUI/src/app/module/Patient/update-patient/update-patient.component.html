@@ -1,0 +1,89 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+    <h1 class="title">UPDATE PROFILE</h1>
+  </div>
+
+  <div class="container pt-3"  style="background-color: darkgray;">
+    <form #patientForm="ngForm" (ngSubmit)='onUpdate(patientForm.value)'>
+
+        <div class="form-group">
+            <label>ID: </label>
+            <input required minlength="1" type="number" [(ngModel)]="patient.patientId" readonly="readonly" #patientIdRef='ngModel' name="patientId" ngModel class="form-control">
+        </div>
+        <div class="form-group">
+            <label>NAME: </label>
+            <input required minlength="4" type="text" [(ngModel)]="patient.patientName" #patientNameRef='ngModel' name="patientName" ngModel class="form-control" placeholder="Enter Name...">
+            <div *ngIf='patientNameRef.errors && patientNameRef.touched' class="alert alert-danger">
+                    <div *ngIf='patientNameRef.errors.required'>Provide Valid Name </div>
+                    <div *ngIf='!patientNameRef.errors.pattern'>Name should be minimum of 4 characters length</div>
+                </div>
+        </div>
+        <div class="form-group">
+            <label>AGE: </label>
+            <input required type="number" [(ngModel)]="patient.patientAge" #patientAgeRef='ngModel' name="patientAge" ngModel class="form-control" placeholder="Enter Age...">
+            <div *ngIf='patientAgeRef.errors && patientAgeRef.touched' class="alert alert-danger">
+                <div [hidden]='!patientAgeRef.errors.required'> Provide Valid Age </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>PHONE NUMBER: </label>
+            <input required length="10" type="number" [(ngModel)]="patient.patientMobile" pattern="[7-9][0-9]{9}" #patientPNRef='ngModel' name="patientMobile" ngModel class="form-control" placeholder="Enter Mobile Number...">
+            <div *ngIf='patientPNRef.errors && patientPNRef.touched' class="alert alert-danger">
+                <div *ngIf='!patientPNRef.errors.required'> Provide Valid Phone Number </div>
+                <div *ngIf='patientPNRef.errors.pattern'>Phone number should start with 7,8,9 and of 10 digits</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>EMAIL ID: </label>
+            <input required type="email" [(ngModel)]="patient.patientEmail" #patientEmRef='ngModel' name="patientEmail" ngModel class="form-control" placeholder="Enter Email ID...">
+            <div *ngIf='patientEmRef.errors && patientEmRef.touched' class="alert alert-danger">
+                <div [hidden]='!patientEmRef.errors.required'> Provide Valid Email ID </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>DOB: </label>
+            <input required type="date" [(ngModel)]="patient.patientDOB" #patientDobRef='ngModel' name="patientDOB" ngModel class="form-control" placeholder="Enter DOB...">
+            <div *ngIf='patientDobRef.errors && patientDobRef.touched' class="alert alert-danger">
+                <div [hidden]='!patientDobRef.errors.required'> Provide Valid DOB </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>USERNAME: </label>
+            <input required minlength="6" type="text" [(ngModel)]="patient.patientUserName" #patientUNRef='ngModel' name="patientUserName" ngModel class="form-control" placeholder="Enter Username...">
+            <div *ngIf='patientUNRef.errors && patientUNRef.touched' class="alert alert-danger">
+                <div *ngIf='patientUNRef.errors.required'>Provide Valid Username </div>
+                <div *ngIf='!patientUNRef.errors.pattern'>Username should be minimum of 6 characters length</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>PASSWORD: </label>
+            <input required minlength="6" type="password" [(ngModel)]="patient.patientPassword" #patientPWRef='ngModel' name="patientPassword" ngModel class="form-control" placeholder="Enter Password...">
+            <div *ngIf='patientPWRef.errors && patientUNRef.touched' class="alert alert-danger">
+                <div *ngIf='patientPWRef.errors.required'>Provide Valid Password </div>
+                <div *ngIf='!patientPWRef.errors.pattern'>Password should be minimum of 6 characters length</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>ADDRESS: </label>
+            <input required minlength="6" type="text" [(ngModel)]="patient.patientAddress" #patientAddRef='ngModel' name="patientAddress" ngModel class="form-control" placeholder="Enter Address...">
+            <div *ngIf='patientAddRef.errors && patientAddRef.touched' class="alert alert-danger">
+                <div *ngIf='patientAddRef.errors.required'>Provide Valid Address </div>
+                <div *ngIf='!patientAddRef.errors.pattern'>Address should be minimum of 6 characters length</div>
+            </div>
+        </div>
+    <input [disabled]="!patientForm.valid" type="submit" value="Update Profile" class="btn btn-primary"><br><br>
+</form>
+
+</div>
+</body>
+

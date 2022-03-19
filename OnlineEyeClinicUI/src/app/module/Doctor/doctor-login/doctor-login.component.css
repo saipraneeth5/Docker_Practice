@@ -1,0 +1,13 @@
+input:disabled,
+input[disabled] {
+  cursor: not-allowed !important;
+}
+
+select:disabled,
+select[disabled] {
+  cursor: not-allowed !important;
+}
+textarea:disabled,
+textarea[disabled] {
+  cursor: not-allowed !important;
+}

@@ -1,0 +1,32 @@
+<div class="jumbotron text-center" style="margin-bottom:0">
+
+    <h1 style="text-align:center;"><i>SPECTACLES</i></h1>
+  </div>
+  
+  <div class="table-responsive">
+  
+    <table class="table table-striped" *ngIf="spectacle &&  spectacle.length > 0 ">
+      <thead style="text-align:center;">
+        <tr>
+          <th>spectaclesimage</th>
+          <th (click)="sort('spectaclesId',order)">spectaclesId <i class="fas fa-sort"></i></th>
+          <th (click)="sort('spectaclesModel',order)">spectaclesModel <i class="fas fa-sort"></i></th>
+          <th (click)="sort('spectaclesDescription',order)">spectaclesDescription <i class="fas fa-sort"></i></th>
+          <th (click)="sort('spectaclesCost',order)">spectaclesCost <i class="fas fa-sort"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of spectacle|orderBy:column:order" style="text-align: center;">
+          <td><img src="./assets/image7.png" alt="Forest" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+          </td>
+          <td>{{s.spectaclesId}}</td>
+          <td>{{s.spectaclesModel}}</td>
+          <td>{{s.spectaclesDescription}}</td>
+          <td>{{s.spectaclesCost | currency:'INR':'symbol':'1.2'}}</td>
+  
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-info" (click)="onBack()" style="margin-left: 20px;">Back</button><br>
+  </div><br><br>
+  

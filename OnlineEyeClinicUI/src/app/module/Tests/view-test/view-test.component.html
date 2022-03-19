@@ -1,0 +1,27 @@
+<div class="container">
+    <table class="table table-striped" *ngIf="test && test.length > 0 else elseBlock">
+
+        <thead>
+        <tr>
+            <th (click)="sort('testId',order)">TEST ID <i class="fas fa-sort"></i></th>
+            <th (click)="sort('testName',order)">TEST NAME <i class="fas fa-sort"></i></th>
+            <th (click)="sort('testType',order)">TEST TYPE <i class="fas fa-sort"></i></th>
+            <th >TEST DESCRIPTION</th>
+            <th (click)="sort('testCost',order)">TEST COST <i class="fas fa-sort"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of test | orderBy:column:order">
+                <td> {{t.testId}} </td>
+                <td> {{t.testName}} </td>
+                <td> {{t.testType}} </td>
+                <td>{{t.testDescription}}</td>
+                <td> {{t.testCost | currency:'INR':'symbol':'1.2'}} </td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no Test Available currently</h4>
+    </ng-template>
+    <button class="btn btn-info" (click)="onBack()">Back</button>
+</div><br>

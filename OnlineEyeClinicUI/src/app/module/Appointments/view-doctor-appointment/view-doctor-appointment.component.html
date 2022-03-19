@@ -1,0 +1,62 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+</head>
+<div class="container">
+  <table
+    class="table table-striped table-responsive"
+    *ngIf="appointments && appointments.length"
+    else
+    elseBlock
+  >
+    <thead>
+      <tr>
+        <th>APPOINTMENT ID</th>
+        <th>PATIENT ID</th>
+        <th>DOCTOR ID</th>
+        <th>APPOINTMENT DATE</th>
+        <th>APPOINTMENT TIME</th>
+        <th>CONSULTATION FEE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of appointments" style="text-align: center">
+        <td>{{ a.appointmentId }}</td>
+        <td>{{ a.patientId }}</td>
+        <td>{{ a.doctorId }}</td>
+        <td>{{ a.dateOfAppointment }}</td>
+        <td>{{ a.timeOfAppointment }}</td>
+        <td>{{ a.consultationFee }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #elseBlock>
+    <h4 align="center">There are no Appointments to display!</h4>
+    <div align="center">
+      <div class="navbar-nav">
+        <li class="nav-item">
+          <a
+            [routerLink]="'/bookapp'"
+            routerLinkActive="active"
+            class="nav-link"
+            >click here to Book Appointment</a
+          >
+        </li>
+      </div>
+    </div>
+  </ng-template>
+  <!-- <h4 align="center"> There are no Appointments to display! </h4> -->
+  <!-- <div align="center">
+          <div class = "navbar-nav">
+            <li class = "nav-item">
+                <a [routerLink]="'/bookapp'" routerLinkActive="active" class="nav-link">click here to Book Appointment</a>
+            </li>
+            </div>
+        </div> -->
+  <button class="btn btn-info" (click)="onBack()">Back</button><br />
+</div>
+<br />

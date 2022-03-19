@@ -1,0 +1,101 @@
+
+<div class="container">
+
+    <h3>ADD TEST</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+        <!-- <div class="form-group">
+
+            <label>TEST : </label>
+
+            <input required minlength="1" type="number" #tesIdRef='ngModel' name="id" ngModel class="form-control">
+
+            <div *ngIf='tesIdRef.errors && tesIdRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!tesIdRef.errors.required'> Provide TEST Id </div>
+
+            </div>
+        </div> -->
+
+
+
+        <div class="form-group">
+
+            <label>TEST NAME: </label>
+
+            <input required minlength="6" type="text" #tesNameRef='ngModel' name="testName" ngModel class="form-control">
+
+            <div *ngIf='tesNameRef.errors
+                        && tesNameRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!tesNameRef.errors.required'>
+
+                    Provide TEST Name
+
+                </div>
+
+                <div *ngIf='tesNameRef.errors.pattern'>Name should be minimum of 6 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>TEST TYPE: </label>
+
+            <input required minlength="4" length="4" type="text" #testypRef='ngModel' name="testType" ngModel
+                class="form-control">
+
+            <div *ngIf='testypRef.errors && testypRef.touched' class="alert alert-danger">
+
+
+                <div [hidden]='!testypRef.errors.required'> Provide TEST Type </div>
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>TEST DESCRIPTION: </label>
+
+            <input required length="5" type="text" #tesdescriptionRef='ngModel' name="testDescription" ngModel
+                class="form-control">
+
+            <div *ngIf='tesdescriptionRef.errors && tesdescriptionRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!tesdescriptionRef.errors.required'> Provide TEST DESCRIPTION </div>
+
+                <div *ngIf='tesdescriptionRef.errors.pattern'>test description should consists of characters</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <label> COST:</label>
+
+            <input required minlength="4" type="number"  #testcostRef='ngModel' name="testCost"
+                ngModel class="form-control">
+
+            <div *ngIf='testcostRef.errors
+                        && testcostRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!testcostRef.errors.required'>
+
+                    Provide Test Description Name
+                </div>
+            </div>
+
+        
+            
+       
+    </div>
+    <input [disabled]="!userForm.valid" type="submit" value="Add Test" class="btn btn-primary" style="margin-right: 15px;">
+    <input type="reset" value="Clear" class="btn btn-danger" style="margin-right: 20px;"> <button class="btn btn-info" (click)="onBack()">Back</button>
+</form>
+
+</div><br>
+

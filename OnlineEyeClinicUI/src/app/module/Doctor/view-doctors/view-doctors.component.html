@@ -1,0 +1,42 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-dark table-striped" *ngIf="doctors && doctors.length > 0 else elseBlock">
+    <thead class="table table-primary">
+    <tr class="text-danger">
+        
+        <th (click)="sort('doctorId',order)">ID <i class="fas fa-sort"></i></th>
+        <th (click)="sort('doctorName',order)">NAME <i class="fas fa-sort"></i></th>
+        <th  (click)="sort('doctorConsultationTime',order)">CONSULTATION TIME <i class="fas fa-sort"></i></th>
+        <th (click)="sort('doctorMobile',order)">MOBILE NUMBER <i class="fas fa-sort"></i></th>
+        <th (click)="sort('doctorEmail',order)">EMAIL <i class="fas fa-sort"></i></th>
+        <th (click)="sort('address',order)">ADDRESS <i class="fas fa-sort"></i></th>
+    </tr>
+    </thead>
+    <tbody >
+        
+        <tr *ngFor="let doc of doctors|orderBy:column:order"  style="text-align: center;">
+            <td> {{doc.doctorId}} </td>
+            <td> {{doc.doctorName}} </td>
+            <td> {{doc.doctorConsultationTime}} </td>
+            <td> {{doc.doctorMobile}} </td>
+            <td> {{doc.doctorEmail}} </td>
+            <td> {{doc.address}} </td>
+        </tr>
+    </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There is no Doctors</h4>
+    </ng-template>
+
+    </div>
+<button class="btn btn-info" (click)="onBack()">Back</button><br>

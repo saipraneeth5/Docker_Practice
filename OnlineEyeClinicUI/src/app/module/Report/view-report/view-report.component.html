@@ -1,0 +1,44 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-dark table-striped" *ngIf="report && report.length > 0 && report[0].patientId==pId else elseBlock">
+    <thead class="table table-primary">
+    <tr class="text-danger">
+        
+        <th (click)="sort('patientId',order)">PATIENT ID <i class="fas fa-sort"></i></th>
+        <th (click)="sort('reportId',order)">REPORT ID <i class="fas fa-sort"></i></th>
+        <th  (click)="sort('dateOfReport',order)">Date Of Report <i class="fas fa-sort"></i></th>
+        <th (click)="sort('descriptionOfReport',order)">REPORT DESCRIPTION <i class="fas fa-sort"></i></th>
+        <th (click)="sort('visualAcuity',order)">REPORT VISUALACUITY <i class="fas fa-sort"></i></th>
+        <th (click)="sort('visualAcuityNear',order)"> VISUALACUITY NEAR <i class="fas fa-sort"></i></th>
+        <th (click)="sort('visualAcuityDistance',order)"> VISUALACUITY DISTANCE <i class="fas fa-sort"></i></th>
+    </tr>
+    </thead>
+    <tbody >
+        
+        <tr *ngFor="let r of report|orderBy:column:order"  style="text-align: center;">
+            <td> {{r.patientId}} </td>
+            <td> {{r.reportId}} </td>
+            <td> {{r.dateOfReport}} </td>
+            <td> {{r.descriptionOfReport}} </td>
+            <td> {{r.visualAcuity}} </td>
+            <td> {{r.visualAcuityDistance }} </td>
+            <td> {{r.visualAcuityNear }} </td>
+        </tr>
+    </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There is no Reports for you</h4>
+    </ng-template>
+
+    </div>
+
+    <button class="btn btn-info" (click)="onBack()">Back</button><br>

@@ -1,0 +1,45 @@
+<div style="">
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action active" style="cursor:none;">Dashboard</a>
+          <a [routerLink]="'/addtest'" class="list-group-item list-group-item-action" style="cursor:pointer;">Add Test</a>
+          <a [routerLink]="'/viewtests'" class="list-group-item list-group-item-action" style="cursor:pointer;">View Tests</a>
+          <a class="list-group-item list-group-item-action" (click)="onViewAppointment()" style="cursor:pointer;">View Appointments</a>
+          <a [routerLink]="'/addreport'" class="list-group-item list-group-item-action" style="cursor:pointer;">Add Report</a>
+        </div>
+      </div>
+      <div class="row" style="width: 70%">
+        <div class="container" *ngFor="let doc of doctor">
+          <div class="jumbotron" style="cursor: pointer">
+            <h1 align="center">Welcome {{ doc.doctorName | uppercase }}</h1>
+          </div>
+          <div class="card" style="width: auto">
+            <div
+              class="card-body bg-primary"
+              style="cursor: pointer; border-radius: 0%"
+            >
+              <div style="margin-left: 10%">
+                <h4 class="card-title"><b>Profile Details:</b></h4>
+                <p class="card-text">
+                  <!-- Id: {{ doc.doctorId }} <br /> -->
+                  <i class="fas fa-user"></i> {{ doc.doctorName }} <br />
+                  <i class="fas fa-mobile"></i> {{ doc.doctorMobile }}<br />
+                  <i class="fas fa-envelope-square"></i> {{ doc.doctorEmail }}
+                  <br />
+                  <!-- Username: {{ doc.userName }} <br /> -->
+                  <i class="far fa-address-card"></i> {{ doc.address }} <br />
+                  <br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" ><button [routerLink]="'/doctorlogin'" class="btn"  style="height:10%; margin-left:40%; margin-right:20%; background-color:lightcoral;" >Logout</button></div>
+    </div>
+  </div>
+  <br /><br />
+</div>
+  
